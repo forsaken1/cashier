@@ -11,7 +11,6 @@ module Cashier
         tags = tag_option.is_a?(Proc) ? tag_option.call(self) : tag_option
 
         options = options.merge({ :tag => tags }) if tags
-        ActiveSupport::Cache::Store.instrument = true
       end
       super(key, content, options)
     end
