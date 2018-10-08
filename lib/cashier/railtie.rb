@@ -4,7 +4,9 @@ module Cashier
 
     initializer "cashier.active_support.cache.instrumentation" do |app|
       ActiveSupport.on_load(:action_controller) do
-        require 'cashier/controllers/application_controller'
+        require "cashier/action_controller_methods"
+
+        ::ActionController::Base.send(:include, Cashier::ActionControllerMethods)
       end
    end
   end
